@@ -5,4 +5,25 @@
   "status" : "In Progress",
   "target_date" : "2025-12-31",
   "created_at" : "2026-08-02 22:49:43"
+}, {
+  "id" : 2,
+  "name" : "Java Basics",
+  "description" : "teste do novo curso",
+  "status" : "Completed",
+  "target_date" : "2026-08-31",
+  "created_at" : "2026-08-02 23:22:29"
+}, {
+  "id" : 3,
+  "name" : "JavaScript Basics",
+  "description" : "JavaScript Basics",
+  "status" : "Not Started",
+  "target_date" : "2026-09-03",
+  "created_at" : "2026-08-02 23:23:09"
+}, {
+  "id" : 5,
+  "name" : "AI for developers",
+  "description" : "teste",
+  "status" : "In Progress",
+  "target_date" : "2026-08-07",
+  "created_at" : "2026-08-02 23:23:34"
 } ]

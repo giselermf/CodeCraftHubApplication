@@ -545,14 +545,15 @@
       async function fetchCourses() {
         setLoading(true);
         try {
-          state.courses = await apiRequest(API_BASE);
-          renderCourses();
+          const payload = await apiRequest(API_BASE);
+          state.courses = payload.courses ?? [];
           await fetchStats();
         } catch (err) {
           renderCoursesError(err);
           toast(`Failed to load courses: ${err.message}`, 'error');
         } finally {
           setLoading(false);
+          renderCourses();
         }
       }
 
@@ -643,10 +644,11 @@
       }
 
       function renderStats(stats) {
-        $('#stat-total').textContent = stats.total ?? '—';
-        $('#stat-progress').textContent = stats['In Progress'] ?? stats.in_progress ?? '—';
-        $('#stat-notstarted').textContent = stats['Not Started'] ?? stats.not_started ?? '—';
-        $('#stat-completed').textContent = stats['Completed'] ?? stats.completed ?? '—';
+        const byStatus = stats.courses_by_status ?? {};
+        $('#stat-total').textContent = stats.total_courses ?? stats.total ?? '—';
+        $('#stat-progress').textContent = byStatus['In Progress'] ?? stats['In Progress'] ?? stats.in_progress ?? '—';
+        $('#stat-notstarted').textContent = byStatus['Not Started'] ?? stats['Not Started'] ?? stats.not_started ?? '—';
+        $('#stat-completed').textContent = byStatus['Completed'] ?? stats['Completed'] ?? stats.completed ?? '—';
       }
 
       function renderCourses() {
